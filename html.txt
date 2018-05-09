@@ -1,0 +1,20 @@
+<html>
+<head>
+<title>DEVICE ON/OFF</title>
+</head>
+<body>
+<!-- This is just for aesthetics, centering the
+content within the paragraph -->
+<h1 align=\"center\">IOT based security System</h1>
+<p font size="6">arming / disarming the detector </p>
+<p align="center">
+<font size="4">
+  
+<!-- This part is a a link, which also sends a request to the php-document,
+telling it to write 1 or 0 to LEDstate.txt -->
+<b><a href="led.php?state=1">ON</a></b> /
+<b><a href="led.php?state=0">OFF</a></b></font>
+</p>
+<h3 align=\"center\">Click on ON to enable the security system</h3>  
+</body>
+</html>

@@ -1,0 +1,35 @@
+import processing.serial.*;
+ Serial port;
+ String val;
+ 
+ void setup()  {
+ 
+   /* This part must be altered to fit your local settings. The number in brackets after "Serial.list()" is where you declare what COM port your Arduino is connected to.
+      If you get error messages, try a different number starting from 0 (e.g. 0, 1, 2, 3...) . */
+      println(Serial.list());
+    port = new Serial(this, Serial.list()[0], 9600);  // Open the port that the Arduino board is connected to, at 9600 baud
+ 
+}
+ void draw() {
+ 
+  String onoroff[] = loadStrings("https://projnetone.000webhostapp.com/LEDstate.txt"); // Insert the location of your .txt file
+  print(onoroff[0]);  // Prints whatever is in the file ("1" or "0")
+ 
+  if (onoroff[0].equals("1") == true) {
+    println(" - TELLING SYSTEM TO ARM");
+    port.write('H'); // Send "H" over serial to set 
+  } else {
+ 
+    println(" - TELLING SYSTEM TO DISARM ");
+    port.write('L');  // Send "L" over serial
+ }
+ 
+ if(port.available()>0)
+ {
+   val=port.readStringUntil('\n');
+ }
+ 
+ println(val);
+ 
+  delay(500); // Set your desired interval here, in milliseconds
+ }
